@@ -1,5 +1,7 @@
 # SMAUG
 code for running the SMAUG analysis 
+
+
 Single Molecule Analysis by Unsupervised Gibbs sampling accurately and precisely determines a number of parameter values from single molecule tracking data
 
 
