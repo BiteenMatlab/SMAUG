@@ -55,6 +55,8 @@ for kk=1:numel(TrFileName)
         elseif strcmp(dexts{kk},'.mat')==1&&strcmp(dnames{kk}(end-3:end),'fits') %SMALL-labs code
             load(TrFileName{kk},'tracks')
             trfile=tracks(:,[4,1,5,2,3]);
+        elseif strcmp(dexts{kk},'.mat') %the simulations test code
+            load(TrFileName{kk},'trfile')
         end
     else
         trfile=Params.TrackFile;
