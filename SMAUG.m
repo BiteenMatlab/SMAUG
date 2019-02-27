@@ -1,36 +1,35 @@
 function [out]=SMAUG(varargin)
 
 %% Parameters
-disp('Parameters.......set')%this is an inside joke
+disp('Parameters.......set') %this is an inside joke
 disp('LOADING')
 
 %imaging parameters
-Params.ImgIntTime=0.02;     % frame integration time in seconds
-Params.ImgNPP=160;           % Nanometeres per pixel .082; %60x value  .049 100x value 160 sarah
+Params.ImgIntTime=0.02;     % frame integration time in seconds (0.04 for most of this paper; 0.02 for Figures 4 and S5-S6)
+Params.ImgNPP=160;           % Nanometers per pixel (49 for most of this paper; 82 for Figure S3; 160 for Figures 4 and S5-S6)
 
 %analysis prarmaters
 Params.MinTrLength=4;     %min number of localizations for a track to be considered
 Params.IntL=10;           %initial number of states
 Params.MaxIter=10000;     %max iterations to consider after which SMAUG will hard stop
-% Params.IterStop=5000;    %someties I like to have it stop and check things as they go. set to 0 if you want to not do this
+% Params.IterStop=5000;    %sometimes I like to have it stop and check things as they go. set to 0 if you want to not do this
 Params.IterSaveFreq=10;  %#iterations between saves to the output file, gotta be nonzero
 Params.BurnIn=500;       %burn-in  none of the calculations on the chains themselves will kick in until after the burn-in
-% Params.Resort=1;          % do you want to occasionally scramble the track order.
-% Params.ResortFreq=10;     %how often do you want to scramble it up,
+% Params.Resort=1;          % do you want to occasionally scramble the track order?
+% Params.ResortFreq=10;     %how often do you want to scramble it up?
 Params.Bootstrap=0;       %bootstrapping of the datasets by resample with replacement
 Params.ResampleHypers=0;  % toggle to resample the hyper parameters using the hyper-hyper parameters
 Params.ResampHypersFreq=5;% set to how many iterations before the hypers are resampled
 
 % toggles for various outputs
-Params.YesPlot=1;         %do you want to plot the output when its done
+Params.YesPlot=1;         %do you want to plot the output when it's done?
 Params.YesMatfile=1;      % do you want to save to a matfile the analysis?
-Params.SaveWorkSpace=0;   %if 1 will save the whole workspace, bigger files but maybe you want to save the whole thing
-Params.MatfileName='name of analysis out file'; %if you want to output a file got to give it a name
+Params.SaveWorkSpace=0;   %if 1, will save the whole workspace, this ,akes bigger files but maybe you want to save the whole thing
+Params.MatfileName='name of analysis out file'; %if you want to output a file, you've got to give it a name
 
 %wheres the data to be analyzed 
 Params.TrackFileLoc=[];   %location of a folder holding many files
-Params.TrackFile=[];         %leave empty to select data
-
+Params.TrackFile=[];         %leave empty to select all data in a folder
 
 %hypervariables for the code. most are set to be flat. if desired to have
 %an adaptive hyperparameter toggle Params.ResampleHypers to 1 above
@@ -50,7 +49,7 @@ Hypers.CorrMu=0;%-10;
 Hypers.CorrK=1;%500;
 Hypers.Num=25;
 
-%% you can change the Params file from the command line if you want using paired inputs
+%% you can change the Params file from the command line using paired inputs if you want
 fNames=fieldnames(Params);
 if nargin>1&&rem(nargin,2)==0
     for ii=1:2:nargin-1
