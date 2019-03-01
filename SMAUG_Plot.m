@@ -28,10 +28,10 @@ xlabel('Iterations')
 
 %scatter plot of Dvals vs weight fraction for the most probable model
 figure
-for ii=1:Sample.isave-1
-    if out.L(ii)==mode(out.L)
-        [s2(ii,:),i2]=sort(out.Dvals{ii});
-        w2(ii,:)=out.Pi{ii}(i2)/sum(out.Pi{ii});
+for mm=round(Sample.isave/2):Sample.isave-1
+    if out.L(mm)==mode(out.L(round(Sample.isave/2):end))
+        [s2(mm,:),i2]=sort(out.Dvals{mm});
+        w2(mm,:)=out.Pi{mm}(i2)/sum(out.Pi{mm});
     end
 end
 s2(s2(:,1)==0,:)=[];
@@ -40,10 +40,8 @@ w3=mean(w2,1);
 s3=mean(s2,1);
 figure
 hold on
-for ii=1:size(s2,1)
-    for jj=1:mode(out.L)
-        scatter(w2(ii,jj),s2(ii,jj),7,c(jj,:),'filled')
-    end
+for jj=1:mode(out.L(round(Sample.isave/2):end))
+    scatter(w2(:,jj),s2(:,jj),7,c(jj,:),'filled')
 end
 set(gca,'yscale','log')
 axis tight
