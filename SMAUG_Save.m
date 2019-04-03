@@ -11,7 +11,7 @@ out.Dvals{isave}=(Sample.Sigma.^2+2*Sample.CMu)/2/Params.ImgIntTime/1e6; %conver
 out.Pi{isave}=Sample.Pi'; %weight fractions
 % out.TransMat{isave}=TMcalc(Steps(:,3),mode(Sample.LabelSaves,1),Sample.Alpha*Sample.Beta);
 out.TransMat{isave}=TMcalc(Steps(:,3),mode(Sample.l,1),Sample.Alpha*Sample.Beta);
-if Sample.Iter==1
+if Sample.isave==1
     out.Params=Params;
     out.TrackIDs=Steps(:,5:6);
     out.MovNames=dnames;
