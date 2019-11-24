@@ -7,8 +7,8 @@ c=colormap('lines');
 %plot the # of states per iteration
 figure
 plot(out.L,'b','linewidth',2)
-title('Mobility Sates')
-ylabel('Number of Sates')
+title('Mobility States')
+ylabel('Number of States')
 xlabel('Iteration')
 
 %scatter plot of Dvals vs iteration
@@ -23,7 +23,7 @@ end
 set(gca,'yscale','log')
 axis tight
 title('Diffusion Value Estimates vs Iteration')
-ylabel('Diffusion Coeffecient, \mum^2/s')
+ylabel('Diffusion Coefficient, \mum^2/s')
 xlabel('Iterations')
 
 %scatter plot of Dvals vs weight fraction for the most probable model
@@ -47,7 +47,7 @@ set(gca,'yscale','log')
 axis tight
 titlestr=sprintf('Diffusion vs weight fraction for L = %d', mode(out.L));
 title(titlestr)
-ylabel('Diffusion Coeffecient, \mum^2/s')
+ylabel('Diffusion Coefficient, \mum^2/s')
 xlabel('Weight Fraction')
 
 end
